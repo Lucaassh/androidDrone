@@ -8,15 +8,15 @@
         <item
             android:id="@+id/nav_perfil"
             android:icon="@android:drawable/checkbox_off_background"
-            android:title="@string/perfil" />
+            android:title="Encomendas" />
             <item
                 android:id="@+id/nav_gallery"
                 android:icon="@drawable/ic_menu_share"
-                android:title="@string/encomendas" />
+                android:title="Perfil" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="Fale Conosco" />
 
     </group>
 </menu>

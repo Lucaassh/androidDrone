@@ -17,14 +17,15 @@ public class conecta {
     static String usuario = "admin";
     static String senha = "Alohomora01";
     static String url = "jdbc:mysql://" + servidor + "/" + banco;
+    static String status;
 
     static void testeDaConexao() {
         try {
             conexao = DriverManager.getConnection(url, usuario, senha);
-            System.out.println("Conexao com o banco realizada com sucesso.");
+            status = "Conexao com o banco realizada com sucesso.";
 
         } catch (Exception e) {
-            System.out.println("Falha durante o teste de conexão!");
+            status = "Falha durante o teste de conexão!";
             e.printStackTrace();
         } finally {
             if (conexao != null) {

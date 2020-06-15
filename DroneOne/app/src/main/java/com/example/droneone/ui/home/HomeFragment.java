@@ -1,9 +1,14 @@
 package com.example.droneone.ui.home;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,10 +21,14 @@ import com.example.droneone.R;
 
 public class HomeFragment extends Fragment {
 
+
     private HomeViewModel homeViewModel;
+    private String url = "https://www.google.com.br";
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
@@ -30,6 +39,27 @@ public class HomeFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+        WebView myWebView = (WebView) root.findViewById(R.id.webView);
+        myWebView.loadUrl("http://3.21.37.101/index.html");
+        myWebView.setWebViewClient(new WebViewClient());
+        WebSettings webSettings = myWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
         return root;
+    }
+
+    private class MyWebViewClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            if (Uri.parse(url).getHost().equals("http://3.21.37.101/index.html")) {
+                return false;
+
+            }
+
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+            return true;
+        }
     }
 }
