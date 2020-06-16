@@ -41,7 +41,7 @@ public class HomeFragment extends Fragment {
         });
 
         WebView myWebView = (WebView) root.findViewById(R.id.webView);
-        myWebView.loadUrl("http://3.21.37.101/index.html");
+        myWebView.loadUrl("http://18.217.246.14/select.php");
         myWebView.setWebViewClient(new WebViewClient());
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -52,7 +52,7 @@ public class HomeFragment extends Fragment {
     private class MyWebViewClient extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if (Uri.parse(url).getHost().equals("http://3.21.37.101/index.html")) {
+            if (Uri.parse(url).getHost().equals("http://18.217.246.14/select.php")) {
                 return false;
 
             }
